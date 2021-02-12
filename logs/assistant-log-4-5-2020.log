@@ -1,0 +1,6 @@
+
+{"id":"9e009f45-baee-4faf-8482-54206a21d798","type":"Incoming","date":"2020-05-04T14:07:33.493Z"}
+{"id":"9e009f45-baee-4faf-8482-54206a21d798","type":"Outgoing","message":{"key":"value"},"date":"2020-05-04T14:07:33.493Z"}
+{"id":"89c4c5c1-e032-4fa1-8ca3-55ef7d4c1ada","type":"Incoming","date":"2020-05-04T14:09:33.098Z"}
+{"id":"89c4c5c1-e032-4fa1-8ca3-55ef7d4c1ada","type":"Outgoing","message":{"key":"value"},"date":"2020-05-04T14:09:33.098Z"}
+{"id":"fd9c74d6-2478-4746-ab35-d28c3004b075","type":"Incoming","activity":"entrust_request","request_type":"unblock","serial_number":"17865446789","date":"2020-05-04T16:52:03.774Z"}
