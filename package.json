@@ -1,7 +1,7 @@
 {
   "name": "botware",
   "version": "1.0.0",
-  "description": "This is a middleware between the FBNChatbot and ...",
+  "description": "This is a middleware between the dDLChatbot and ...",
   "main": "app.js",
   "scripts": {
     "start": "node ./app.js",

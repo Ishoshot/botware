@@ -180,7 +180,7 @@ const { logCaseResponse } = require('./responses/logcase')
 
 app.post('/api/log-case', (req, res) => {
   validateAccountNumber(req, res)
-  const message = `Case Successfully Created for ${req.body.AccountNumber}. Tracking Number: FBN-09022150609`
+  const message = `Case Successfully Created for ${req.body.AccountNumber}. Tracking Number: dDL-09022150609`
   logCaseResponse.message = message
   return res.status(200).json(logCaseResponse)
 })

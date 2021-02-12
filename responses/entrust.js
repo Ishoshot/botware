@@ -26,7 +26,7 @@ const statusEnquiryData = {
   Tokens: [
     {
       UserName: 'TMP01457',
-      Group: 'FBN_Staff',
+      Group: 'dDL_Staff',
       SerialNumber: '0930970971',
       ActivationState: 'HOLD',
       LockState: 'Unlocked',
