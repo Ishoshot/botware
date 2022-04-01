@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
+const axios = require('axios')
 dotenv.config()
 app.use(express.json())
 
@@ -183,6 +184,22 @@ app.post('/api/log-case', (req, res) => {
   const message = `Case Successfully Created for ${req.body.AccountNumber}. Tracking Number: dDL-09022150609`
   logCaseResponse.message = message
   return res.status(200).json(logCaseResponse)
+})
+
+app.get('/test', (req, res) => {
+  const token =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMmVjN2JlMTFjZjdmYjk4ZTZkM2Q1NzI1NDIxZDc5Nzk1ZmZjNjc5ZTRmZTUxMTUwNGVmMzM2MmE5ZDg5NmI3ZjllZTA2MTIzMWM1M2Q0M2YiLCJpYXQiOjE2MjM1Nzk5OTUsIm5iZiI6MTYyMzU3OTk5NSwiZXhwIjoxNjU1MTE1OTk1LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.PVol0fiX1VVuBkWINn5-lx2oEYB22h6CuiUmvLHou91sbO3MLNiT6HruI2MtTiAZAa_3R5uAmFJjSA51xJQ4lpWZdZsjUAWekemCmfI8zkFjXucAHqqIAZBBr4buJbKNU79wPH79i632R0JDy-o8XQfxNaWLgktkYysIntoiNE1cqITuQ2SvG0XJ_DOpvivmOd968phlVVB4IAArSr6TNM-F-4t5H8r9rVIbXxygejDbWZgQ3_31LAF97oWqJZQ9aIb-twiYP1lQAylzQTIT9yziwVEhgC6ZAAKd7jreC68I6XcVfO-d_KdmxKjb56vR5ObmtzOLp70Zd3oHjWFmOZ-8UfbvzNQdxZ3KsQJGBbVGDaGFR7Ib8WHIbiYnrKQvuhnLNr4hp137uKvxwdxlai0fI4CALc7hQ7OTUaorQ0iTxMNqg91VeRizdGNvk_S7ABvrEHmusYUh0262umm2g4gtnxHDYd5mF57YMNDXMlFZpk0k10B1kYSVdvFP_24XEbmWXt4Ih8aJBQbTpHBMyuu443x2CqEv_6Jn8cSCeTRU-oAAt62FsOphU9BafmDyLla_X9PvjB-hx5N-V3X_Pn5theIYpi_t2Y-QBUjAydakPNVL4kT6hjnEGphWk9tC4Tc70BrfzMAUK8o7BIY3gM5t1v4qbPhih2deMifC6vY'
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+
+  axios
+    .get(
+      'https://dipolediamond.spark.processmaker.net/api/1.0/collections/12/records',
+      config,
+    )
+    .then((res) => console.log(res.data.data))
+    .catch((err) => console.log(err))
 })
 
 /* ---------------------------------- PORT ---------------------------------- */

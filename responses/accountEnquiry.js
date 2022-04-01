@@ -50,7 +50,7 @@ const accountLienData = {
 
 const accountLien = {
   code: '00',
-  message: JSON.stringify(accountLienData),
+  message: accountLienData,
   otherMessage: '',
 }
 
@@ -178,7 +178,7 @@ const reversalCheckData = {
 
 const reversalCheck = {
   code: '00',
-  message: JSON.stringify(reversalCheckData),
+  message: reversalCheckData,
   otherMessage: '',
 }
 
@@ -206,7 +206,7 @@ const transactionCheckData = {
 
 const transactionCheck = {
   code: '00',
-  message: JSON.stringify(transactionCheckData),
+  message: transactionCheckData,
   otherMessage: '',
 }
 
