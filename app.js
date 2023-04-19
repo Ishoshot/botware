@@ -5,11 +5,14 @@ const axios = require('axios')
 dotenv.config()
 app.use(express.json())
 
+const { openai, routeRequest } = require('./services/openai/openai')
+
 /* ------------------------------- Validations ------------------------------ */
 const {
   accountNumber,
   serialNumber,
   userID,
+  Prompt
 } = require('./validation/validation')
 
 function validateAccountNumber(req, res) {
@@ -19,6 +22,12 @@ function validateAccountNumber(req, res) {
   if (req.body.AccountNumber.length < 10) {
     accountNumber.message = 'Please Provide a Valid Account Number'
     return res.status(200).json(accountNumber)
+  }
+}
+
+function validatePrompt(req, res) {
+  if (!req.body.Prompt || req.body.Prompt === '') {
+    return res.status(200).json(Prompt)
   }
 }
 
@@ -84,9 +93,18 @@ app.post('/api/enquiry/update', (req, res) => {
 
 /* ----------------------------- Balance Enquiry --------------------------- */
 
-app.post('/api/enquiry/balance', (req, res) => {
-  validateAccountNumber(req, res)
-  return res.status(200).json(balanceEnquiryResponse)
+app.post('/api/enquiry/balance', async (req, res) => {
+  // validateAccountNumber(req, res)
+  validatePrompt(req, res)
+  const response = await routeRequest(req, res);
+  if (response.code == '05') {
+    return res.status(500).json(response);
+  }
+  //remove 'Response: ' from response.text
+  const params = response.data.text.replace('Response: ', '');
+  balanceEnquiryResponse.message = `${JSON.parse(params).AccountNumber}: ${balanceEnquiryResponse.message}`
+  return res.status(200).json(balanceEnquiryResponse);
+
 })
 
 /* ----------------------------- Account Freeze ----------------------------- */

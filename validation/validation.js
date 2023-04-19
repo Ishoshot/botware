@@ -16,4 +16,10 @@ module.exports = {
     message: 'Serial Number Field cannot be Empty',
     otherMessage: '',
   },
+
+  Prompt: {
+    code: '25',
+    message: 'Prompt Field cannot be Empty',
+    otherMessage: '',
+  },
 }
