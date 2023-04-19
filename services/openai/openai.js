@@ -28,6 +28,15 @@ const routeRequest = async (req, res) => {
                 }
             };
         }
+    } else {
+        return {
+            'code': '09',
+            'data': {
+                'id': 1,
+                'text': "Sorry, I don't understand that request. Oluwatobi & Folorunso are working on it.",
+                'type': 'response'
+            }
+        };
     }
 
 }

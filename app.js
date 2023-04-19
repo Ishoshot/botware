@@ -100,9 +100,15 @@ app.post('/api/enquiry/balance', async (req, res) => {
   if (response.code == '05') {
     return res.status(500).json(response);
   }
+  if (response.code == '09') {
+    return res.status(500).json({
+      code: '09',
+      message: response.data.text,
+      otherMessage: ''
+    });
+  }
   //remove 'Response: ' from response.text
   const params = response.data.text.replace('Response: ', '');
-  balanceEnquiryResponse.message = `${JSON.parse(params).AccountNumber}: ${balanceEnquiryResponse.message}`
   return res.status(200).json(balanceEnquiryResponse);
 
 })
