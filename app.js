@@ -101,7 +101,7 @@ app.post('/api/enquiry/balance', async (req, res) => {
     return res.status(500).json(response);
   }
   if (response.code == '09') {
-    return res.status(500).json({
+    return res.status(200).json({
       code: '09',
       message: response.data.text,
       otherMessage: ''
