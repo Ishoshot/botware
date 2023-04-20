@@ -109,6 +109,13 @@ app.post('/api/enquiry/balance', async (req, res) => {
   }
   //remove 'Response: ' from response.text
   const params = response.data.text.replace('Response: ', '');
+  if (JSON.parse(params).AccountNumber == '') {
+    return res.status(200).json({
+      code: '09',
+      message: 'Sorry! I believe you are trying to get the balance of an account. Please provide the account number.',
+      otherMessage: ''
+    });
+  }
   return res.status(200).json(balanceEnquiryResponse);
 
 })
